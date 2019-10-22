@@ -1,9 +1,9 @@
 ---
-title:	Flutter app sample
+title:	Flutter项目示例
 
 img: /images/flutter_logo.jpg
 summary: Flutter项目示例
-categories: app sample
+categories: 项目示例
 top: true
 tags:
 - Flutter
@@ -17,20 +17,19 @@ tags:
 
 ----
 
-![totem](https://github.com/pdliuw/pdliuw.github.io/blob/master/images/totem_four_logo.jpg?raw=true)
+![图腾](https://github.com/pdliuw/pdliuw.github.io/blob/master/images/totem_four_logo.jpg?raw=true)
 
 
 
-Flutter app sample
+Flutter项目示例
 
-
-|[中文文档](/README_CH.md)|[English document](/README.md)|[HomePage](https://pdliuw.github.io/)|
+|[中文文档](/README_CH.md)|[English document](/README.md)|[主页](https://pdliuw.github.io/)|
 |:-|:-|:-|
 
-[Click，go to the full sample](https://github.com/pdliuw/flutter_app_sample)
+[点我，查看完整项目](https://github.com/pdliuw/flutter_app_sample)
 
 
-### Render
+### 效果图
 
 
 #### Web
@@ -103,32 +102,39 @@ Flutter app sample
 |:-|:-|
 
 
-###	Technology used
+### 1.  项目理念
 
+1.  构建高复用、低耦合，高应对变化的项目！
 
-1.  MVP+DesignPattern
+###	2.  涉及技术
+
+项目中涉及的技术
+
+1.  MVP+设计模式
 2.  Widget
-3.	Net
-4.  Route
-5.  Animation
+3.	网络
+4.  路由
+5.  动画
 6.  Provider
 7.  ......
 
 
-### TODO
+### 3.  TODO
 
-1.  Continuous iterative project
-2.  Continuous improvement of documentation
+1.  持续迭代项目
+2.  持续完善文档
 3.  ...
 
 
 ----
 
-If you like the design of flutter_app_sample, feel flutter_app_sample to help you, you can click "Star" in the upper right corner to support it! Thank you! ^ _ ^
+如果你喜欢 flutter_app_sample 的设计，感觉 flutter_app_sample 帮助到了你，可以点右上角 "Star" 支持一下 谢谢！ ^_^
 
 ----
 
+
 ### LICENSE
+
 
        Copyright 2019 pdliuw
 
@@ -143,6 +149,8 @@ If you like the design of flutter_app_sample, feel flutter_app_sample to help yo
        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
        See the License for the specific language governing permissions and
        limitations under the License.
+
+
 
 
 

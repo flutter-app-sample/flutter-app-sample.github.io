@@ -3,31 +3,34 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "index.html": "ab9f5b6181a6771af14a209800382307",
-"/": "ab9f5b6181a6771af14a209800382307",
-"main.dart.js": "79dfce9d113232b3d40900c953a0a58e",
+  "version.json": "4fc5c10e754d4569bfcac1e44cd2a0f7",
+"index.html": "20c53e5f53bcb5bd0d08a610d93453bd",
+"/": "20c53e5f53bcb5bd0d08a610d93453bd",
+"main.dart.js": "332383957a7db4352178eb0a9ec128f4",
 "avatar.jpg": "542e597cfb22c720b70ac70557a14e94",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "manifest.json": "af00fae7b28520b6f5c21730c7953a42",
-"assets/LICENSE": "3cc77f3bf4e24efe7176a277d1d87946",
-"assets/AssetManifest.json": "3580edd0ebf80657c38b8c04861e0e35",
-"assets/NOTICES": "275458e24a49c576e288ff7390b211e4",
+"assets/AssetManifest.json": "2d8e75f5686bd862706e0b59b2a49b62",
+"assets/NOTICES": "19f0f1147024abaac95147a8e1627110",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
-"assets/fonts/MaterialIcons-Regular.ttf": "56d3ffdef7a25659eab6a68a3fbfaf16",
-"assets/fonts/MaterialIcons-Regular.otf": "a68d2a28c526b3b070aefca4bac93d25",
+"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
+"assets/assets/place_view_page_banner_2.jpeg": "4921cd46aa4cfba9aa21627f08cb3c9e",
 "assets/assets/dino2.svg": "4b88e984489583c9af22d1c7a93c4bcb",
 "assets/assets/circle.svg": "33b7145eddb4f1d625fc5e655edb40c4",
 "assets/assets/head1.svg": "61e5811d325d1069867257a9185f7c68",
 "assets/assets/child8.svg": "843c93f5f083b57a31963d81a431dba1",
 "assets/assets/child6.svg": "1863e54870bc60d23f6365e15039851b",
+"assets/assets/login_top_gif.gif": "427ceee23304f16e9fa3f7ae6af53e32",
 "assets/assets/child7.svg": "b575f2d0d92e05623a07473f80fd4e0a",
 "assets/assets/avatar.jpg": "542e597cfb22c720b70ac70557a14e94",
 "assets/assets/pexels-photo-396547.jpg": "968524b4c96b079c0b4bb0b7f65cc5dd",
 "assets/assets/child3.svg": "f6f1411a35e8b1f7b208f9faee4a3550",
-"assets/assets/egypt1.svg": "1bb1eb1d74d3da39f24117d75e08d2f3"
+"assets/assets/egypt1.svg": "1bb1eb1d74d3da39f24117d75e08d2f3",
+"assets/assets/place_view_page_banner_0.jpeg": "3e7be19e94da3f466b3d78ac12d4d8d5",
+"assets/assets/place_view_page_banner_1.jpeg": "4d2821ef6515ace0d7e1f90bcc758c6a"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -41,6 +44,7 @@ const CORE = [
 "assets/FontManifest.json"];
 // During install, the TEMP cache is populated with the application shell files.
 self.addEventListener("install", (event) => {
+  self.skipWaiting();
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
@@ -109,6 +113,9 @@ self.addEventListener("activate", function(event) {
 // The fetch handler redirects requests for RESOURCE files to the service
 // worker cache.
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== 'GET') {
+    return;
+  }
   var origin = self.location.origin;
   var key = event.request.url.substring(origin.length + 1);
   // Redirect URLs to the index.html
@@ -118,9 +125,10 @@ self.addEventListener("fetch", (event) => {
   if (event.request.url == origin || event.request.url.startsWith(origin + '/#') || key == '') {
     key = '/';
   }
-  // If the URL is not the RESOURCE list, skip the cache.
+  // If the URL is not the RESOURCE list then return to signal that the
+  // browser should take over.
   if (!RESOURCES[key]) {
-    return event.respondWith(fetch(event.request));
+    return;
   }
   // If the URL is the index.html, perform an online-first request.
   if (key == '/') {
@@ -144,10 +152,12 @@ self.addEventListener('message', (event) => {
   // SkipWaiting can be used to immediately activate a waiting service worker.
   // This will also require a page refresh triggered by the main worker.
   if (event.data === 'skipWaiting') {
-    return self.skipWaiting();
+    self.skipWaiting();
+    return;
   }
-  if (event.message === 'downloadOffline') {
+  if (event.data === 'downloadOffline') {
     downloadOffline();
+    return;
   }
 });
 

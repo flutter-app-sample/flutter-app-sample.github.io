@@ -5125,6 +5125,7 @@ path_provider_windows
 shared_preferences
 shared_preferences_platform_interface
 url_launcher_platform_interface
+video_player_web
 
 Copyright 2017 The Chromium Authors. All rights reserved.
 
@@ -15881,6 +15882,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 --------------------------------------------------------------------------------
 url_launcher
+video_player
+video_player_platform_interface
 webview_flutter
 
 Copyright 2013 The Flutter Authors. All rights reserved.

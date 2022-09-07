@@ -1158,6 +1158,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------------
 ai_awesome_message
 ai_barcode
+ai_clock
 ai_load_status
 ai_progress
 ai_sun
